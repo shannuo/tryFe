@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">  
+<link rel="stylesheet" href="css/style.css">
+<title>石头剪刀布</title>
+</head>
+
+<body>
+	<div class="container">
+    	<div class="row">
+        	<div id="count">
+    			<p class="col-xs-6 col-sm-6">请出拳吧,骚年!</p>
+                <p id="countp" class="col-xs-6 col-sm-6" align="right">您获胜了0次！</p>
+            </div>
+            <div id="player">
+            	<img class="col-xs-4 col-sm-4" src="images/石头.png" alt="石头" onclick="player(0)" />
+                <img class="col-xs-4 col-sm-4" src="images/剪刀.png" alt="剪刀" onclick="player(1)" />
+                <img class="col-xs-4 col-sm-4" src="images/布.png" alt="布" onclick="player(2)" />
+            </div>
+            <div id="sys">
+            	<img id="pl" class="col-xs-4 col-sm-4" />
+                <p id="res" class="col-xs-4 col-sm-4" align="center" onclick="again()"></p>
+                <img id="sy" class="col-xs-4 col-sm-4" />
+            </div>
+        </div>
+    </div>
+    <script src="js/action.js"></script>
+</body>
+</html>

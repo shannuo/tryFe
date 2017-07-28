@@ -1,0 +1,31 @@
+@charset "utf-8";
+/* CSS Document */
+*{
+	margin:0;
+	padding:0;
+	}
+/*计数栏*/
+#count{
+	font-size:35px;
+	padding:100px;
+	}
+/*玩家出拳栏*/
+#player{
+	display:block;
+	}
+#player img{
+	padding:70px;
+	cursor:pointer;
+	}
+/*战况展示栏*/
+#sys{
+	display:none;
+	}
+#sys img{
+	padding:70px;
+	}
+#sys p{
+	font-size:35px;
+	padding:100px;
+	cursor:pointer;
+	}
