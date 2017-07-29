@@ -1,0 +1,91 @@
+@charset "utf-8";
+/* CSS Document */
+*{
+	margin:0;
+	padding:0;
+	}
+body{
+	overflow:hidden;
+	}
+/*开始框*/
+.start{ 
+	height:35px;
+    margin:0 auto;
+	background-color:rgb(255,255,255);
+	border:none;
+	}
+/*盒子*/
+.box{
+	width:680px;  
+    height:715px;  
+    position:absolute;  
+    left:50%;  
+    top:50%;  
+    margin:-340px 0 0 -350px;
+	background-color:#f1f1a1; 
+	}
+/*格子*/
+.cell,.c2,.c4,.c8,.c16,.c32,.c64,.c128,.c256,.c512,.c1024,.c2048{
+	width:150px;
+	height:150px;
+	margin:10px;
+	background-color:rgb(255,255,170);
+	border-radius:15px;
+	}
+.c2{
+	background-color:#FF5;
+	line-height:150px;
+	font-size:100px;
+	}
+.c4{
+	background-color:#ffe543;
+	line-height:150px;
+	font-size:100px;
+	}
+.c8{
+	background-color:#fecf45;
+	line-height:150px;
+	font-size:100px;
+	}
+.c16{
+	background-color:#f3d64e;
+	line-height:150px;
+	font-size:100px;
+	}
+.c32{
+	background-color:#f9b747;
+	line-height:150px;
+	font-size:100px;
+	}
+.c64{
+	background-color:#fe9778;
+	line-height:150px;
+	font-size:100px;
+	}
+.c128{
+	background-color:#ff9b6a;
+	line-height:150px;
+	font-size:80px;
+	}
+.c256{
+	background-color:#f28860;
+	line-height:150px;
+	font-size:80px;
+	}
+.c512{
+	background-color:#fd7d36;
+	line-height:150px;
+	font-size:80px;
+	}
+.c1024{
+	background-color:#e96a25;
+	line-height:75px;
+	font-size:85px;
+	word-break: break-all;word-wrap: break-word;
+	}
+.c2048{
+	background-color:#de772c;
+	line-height:75px;
+	font-size:90px;
+	word-break: break-all;word-wrap: break-word;
+	}
