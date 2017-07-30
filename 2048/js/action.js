@@ -402,7 +402,7 @@ var startx, starty;
 				}
 				break;
             case 2:
-                if(moveRight())
+                if(moveDown())
 				{
 				newNumber();//每次新增一个数字就可能出现游戏结束
 				isgameover();
@@ -416,7 +416,7 @@ var startx, starty;
 				}
 				break;
             case 4:
-                if(moveDown())
+                if(moveRight())
 				{
 				newNumber();//每次新增一个数字就可能出现游戏结束
 				isgameover();
