@@ -22,7 +22,8 @@ body{
     left:50%;  
     top:50%;  
     margin:-340px 0 0 -350px;
-	background-color:#f1f1a1; 
+	background-color:#f1f1a1;
+	border-radius:10px;
 	}
 /*格子*/
 .cell,.c2,.c4,.c8,.c16,.c32,.c64,.c128,.c256,.c512,.c1024,.c2048{

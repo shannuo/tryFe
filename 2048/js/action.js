@@ -11,41 +11,40 @@ for(var i = 0;i<4;i++)
 var start = function()
 {
 	restart();
-	newNumber();
-	newNumber();
+	newNumber(2);
+	newNumber(2);
 }
 document.onkeydown = function(event){
     switch (event.keyCode) {
     case 37://left
         if(moveLeft()){
-            newNumber();//每次新增一个数字就可能出现游戏结束
+            newNumber(2);//每次新增一个数字就可能出现游戏结束
             isgameover();
         }
         break;
     case 38://up
         if(moveUp()){
-            newNumber();//每次新增一个数字就可能出现游戏结束
+            newNumber(2);//每次新增一个数字就可能出现游戏结束
             isgameover();
         }
         break;
     case 39://right
         if(moveRight()){
-            newNumber();//每次新增一个数字就可能出现游戏结束
+            newNumber(2);//每次新增一个数字就可能出现游戏结束
             isgameover();
         }
         break;
     case 40://down
         if(moveDown()){
-            newNumber();//每次新增一个数字就可能出现游戏结束
+            newNumber(2);//每次新增一个数字就可能出现游戏结束
             isgameover();
         }
         break;
 
     }
 }
-var newNumber = function()
+var newNumber = function(t)
 {
-	if(nospace())
 	var num;//值
 	var Cx;//横坐标
 	var Cy;//竖坐标
@@ -56,18 +55,32 @@ var newNumber = function()
             break;
     }
 	num = Math.round(Math.random()*1+1)*2;
-	//console.log(Cx,Cy);
+	////console.log(Cx,Cy);
 	nums[Cx][Cy] = num;
-	showNum(num,Cx,Cy);
+	showNum(num,Cx,Cy,t);
 }
-var showNum = function(num,Cx,Cy)
+var showNum = function(num,Cx,Cy,t)
 	{
 		var id = "c"+Cx.toString()+Cy.toString();
 		var cl = "c"+num.toString();
 		var e = document.getElementById(id);
 		e.innerHTML = num;
 		e.className = "col-xs-3 col-sm-3 "+cl;
-		//console.log(nums);
+		if(t==2)
+		{
+			e.style.cssText = "height:100px;width:100px;margin:35px;opacity:0.1;";
+			$("#"+id).animate({width:"150px",height:"150px",margin:"10px",opacity:1},300);
+		}
+		if(t==1)
+		{
+			$("#"+id).animate({width:"155px",height:"155px",margin:"5px",opacity:0.5},300);
+			$("#"+id).animate({width:"150px",height:"150px",margin:"10px",opacity:1},300);
+		}
+		/*if(t==3)
+		{
+			$("#"+id).animate({left:"150px"},500);
+			$("#"+id).animate({left:"0px"},500);
+		}*/
 	}
 var showNull = function(Cx,Cy)
 	{
@@ -76,7 +89,7 @@ var showNull = function(Cx,Cy)
 		var e = document.getElementById(id);
 		e.innerHTML = "";
 		e.className = "col-xs-3 col-sm-3 "+cl;
-		//console.log(nums);
+		////console.log(nums);
 	}
 var nospace = function() //判断是否还有空间
 	{
@@ -89,7 +102,10 @@ var nospace = function() //判断是否还有空间
 var isgameover = function()
 {
     if(nospace()&&nomove())
-        gameover();
+		{
+			//console.log(nums);
+        	gameover();
+		}
 }
 
 var gameover = function()
@@ -135,7 +151,7 @@ var canMoveDown = function()
 }
 var nomove = function()
 {
-    if(canMoveLeft()|| canMoveRight())
+    if(canMoveLeft()|| canMoveRight()||canMoveUp()||canMoveDown())
         return false;
     return true;
 }
@@ -156,6 +172,7 @@ var moveLeft = function()
 					{
                         //move
                         //showMoveAnimation(i, j,i,k);
+						//showNum(nums[i][j],i,j,3);
                         nums[i][k] = nums[i][j];
                         nums[i][j] = 0;
                         continue;
@@ -167,7 +184,8 @@ var moveLeft = function()
                         //showMoveAnimation(i, j,i,k);
                         //add
                         nums[i][k] += nums[i][j];
-                        nums[i][j] = 0;     
+                        nums[i][j] = 0;   
+						showNum(nums[i][k],i,k,1);
                         continue;
                     }
                 }
@@ -188,7 +206,7 @@ var moveRight = function()
                 //(i,j)右侧的元素
                 for(var k=j+1;k<4;k++)
 				{
-					console.log(nums[i][k],noBlockHorizontal(i,j,k),[j,k],[i,j],nums[i][j]);
+					////console.log(nums[i][k],noBlockHorizontal(i,j,k),[j,k],[i,j],nums[i][j]);
                     //落脚位置的是否为空 && 中间没有障碍物
                     if(nums[i][k]==0&&noBlockHorizontal(i,j,k))
 					{
@@ -206,7 +224,8 @@ var moveRight = function()
                         //showMoveAnimation(i, j,i,k);
                         //add
                         nums[i][k] += nums[i][j];
-                        nums[i][j] = 0;     
+                        nums[i][j] = 0;    
+						showNum(nums[i][k],i,k,1); 
                         continue;
                     }
                 }
@@ -235,7 +254,7 @@ var moveUp = function()
                         nums[k][j] = nums[i][j];
                         nums[i][j] = 0;
                         continue;
-						//console.log(nums);
+						////console.log(nums);
                     }
                     //落脚位置的数字和本来的数字相等 && 中间没有障碍物
                     else if(nums[k][j]==nums[i][j]&&noBlockHorizontal1(j,k,i))
@@ -245,8 +264,9 @@ var moveUp = function()
                         //add
                         nums[k][j] += nums[i][j];
                         nums[i][j] = 0;     
+						showNum(nums[k][j],k,j,1);
                         continue;
-						//console.log(nums);
+						////console.log(nums);
                     }
                 }
             }
@@ -266,7 +286,7 @@ var moveDown = function()
                 //(i,j)下侧的元素
                 for(var k=i+1;k<4;k++)
 				{
-					console.log(nums[i][k],noBlockHorizontal(i,j,k),[j,k],[i,j],nums[i][j]);
+					//console.log(nums[i][k],noBlockHorizontal(i,j,k),[j,k],[i,j],nums[i][j]);
                     //落脚位置的是否为空 && 中间没有障碍物
                     if(nums[k][j]==0&&noBlockHorizontal1(j,i,k))
 					{
@@ -277,10 +297,10 @@ var moveDown = function()
                         nums[i][j] = 0;
 						i++;
                         continue;
-						//console.log(nums);
+						////console.log(nums);
                     }
                     //落脚位置的数字和本来的数字相等 && 中间没有障碍物
-                    else if(nums[k][j]==nums[i][j]&&noBlockHorizontal1(j,k,i))
+                    else if(nums[k][j]==nums[i][j]&&noBlockHorizontal1(j,i,k))
 					{
 						//alert(k);
 						//alert(j);
@@ -289,8 +309,9 @@ var moveDown = function()
                         //add
                         nums[k][j] += nums[i][j];
                         nums[i][j] = 0;     
+						showNum(nums[k][j],k,j,1);
                         continue;
-						//console.log(nums);
+						////console.log(nums);
                     }
                 }
             }
@@ -310,7 +331,7 @@ var updateView = function()
 			if(nums[i][j]==0)
 				showNull(i,j);
 			else
-				showNum(nums[i][j],i,j);
+				showNum(nums[i][j],i,j,0);
 		}
 	}
 	if(iswin)
