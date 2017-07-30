@@ -11,6 +11,7 @@ for(var i = 0;i<4;i++)
 var start = function()
 {
 	restart();
+	$(".pop").hide();
 	newNumber(2);
 	newNumber(2);
 }
@@ -107,11 +108,14 @@ var isgameover = function()
         	gameover();
 		}
 }
-
+var cant = function()
+{
+	document.getElementById("res").innerHTML = "关不了哦，惊不惊喜，意不意外？还是开始游戏吧骚年，啊哈哈哈哈~";
+}
 var gameover = function()
 {
-    alert("gameover");
-	restart();
+    document.getElementById("res").innerHTML = "你又死了呀，好菜哦，再玩一次证明你自己吧";
+	$(".pop").show();
 }
 var canMoveLeft = function()
 {
@@ -341,7 +345,8 @@ var updateView = function()
 }
 var winTheGame = function()
 {
-	alert("you win!");
+	document.getElementById("res").innerHTML = "你赢了！！你竟然赢了，突然有点小崇拜你0.0";
+	$(".pop").show();
 	restart();
 }
 var restart = function()
