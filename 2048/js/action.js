@@ -377,13 +377,16 @@ var startx, starty;
  
         return result;
     }
+	var e1 = document.getElementById("box");
     //手指接触屏幕
-    document.addEventListener("touchstart", function(e) {
+    e1.addEventListener("touchstart", function(e) {
+		event.preventDefault();
         startx = e.touches[0].pageX;
         starty = e.touches[0].pageY;
     }, false);
     //手指离开屏幕
-    document.addEventListener("touchend", function(e) {
+    e1.addEventListener("touchend", function(e) {
+		event.preventDefault();
         var endx, endy;
         endx = e.changedTouches[0].pageX;
         endy = e.changedTouches[0].pageY;
