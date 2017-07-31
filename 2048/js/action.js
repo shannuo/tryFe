@@ -330,7 +330,7 @@ var updateView = function()
 	{
 		for(var j=0;j<4;j++)
 		{
-			if(nums[i][i]==2048)
+			if(nums[i][j]==2048)
 				iswin = true;
 			if(nums[i][j]==0)
 				showNull(i,j);
