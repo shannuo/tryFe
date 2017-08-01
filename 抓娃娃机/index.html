@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">  
+<link rel="stylesheet" href="css/style.css">
+<title>2048-Ahri</title>
+</head>
+
+<body>
+  <h1>抓娃娃机  Ahri-珊</h1>
+  <div class="pop">
+  	<div align="right"><button class="btn btn-default" onclick="cant()">关闭</button></div>
+  	<p id="res" align="center">欢迎来到Ahri珊的抓娃娃机小，使用左右控制抓竿，点击GoPole按钮(下)抓娃娃，我看好你哦~</p>
+    <div align="center">
+    	<button class="btn btn-success" onclick="start()">start the game</button>
+        <button class="btn btn-danger" onclick="restart()">restart the game</button>
+    </div> 
+  </div>
+  <div id="box" class="shade">
+  </div>
+  <div class="start_box">
+  	<div class="start" align="center">
+    <button class="btn btn-success" onclick="goPole()">GoPole</button>
+	<button class="btn btn-danger" onclick="restart()">restart the game</button>
+    </div>
+  </div>
+  <div class="box">
+    <div id="catch_pole">
+        <div id="catch_box">
+            <div id="change"></div>
+            <div id="touch"></div>
+        </div>
+    </div>
+    <div id="doll3" class="doll">
+        <img src="images/娃娃3.png" alt="doll"  />
+    </div>
+    <div id="doll4" class="doll">
+        <img src="images/娃娃4.png" alt="doll"  />
+    </div>
+    <div id="doll2" class="doll">
+        <img src="images/娃娃2.png" alt="doll"  />
+    </div>
+    <div id="doll5" class="doll">
+        <img src="images/娃娃5.png" alt="doll"  />
+    </div>
+    <div id="doll6" class="doll">
+        <img src="images/娃娃6.png" alt="doll"  />
+    </div>
+    </div>
+  </div>
+  <script src="js/action.js"></script>
+  <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js">
+  </script>
+</body>
+</html>

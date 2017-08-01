@@ -1,0 +1,101 @@
+@charset "utf-8";
+/* CSS Document */
+*{
+	margin:0;
+	padding:0;
+	}
+body{
+	overflow:hidden;
+	background-color:rgb(255,255,204);
+	}
+/*弹出框*/
+.pop{
+	display:block;
+	z-index:10;
+	width:600px;  
+    height:350px;  
+    position:absolute;  
+    left:50%;  
+    top:50%;  
+    margin:-200px 0 0 -300px;
+	background-color:#FFF;
+	opacity:0.9;
+	border:1px solid rgb(255,95,0);
+	}
+.pop p{
+	margin:80px 50px 60px 50px;
+	font-size:30px;
+	}
+/*开始框*/
+.start{ 
+	height:35px;
+    margin:0 auto;
+	background-color:#F90;
+	}
+/*盒子*/
+.box{
+	width:680px;  
+    height:755px;  
+    position:absolute;  
+    left:50%;  
+    top:50%;  
+    margin:-380px 0 0 -350px;
+	border-radius:10px;
+	overflow:hidden;
+	box-shadow:1px 5px 5px rgb(0,0,0);
+	border: 50px solid #f1f1a1;
+	border-style:groove;
+	background-image:url(../images/background.jpg);
+	background-size:100%;
+	}
+/*娃娃*/
+.doll_box
+{
+	padding:0px;
+}
+.back{
+	width:680px;
+	height:680px;
+}
+.doll img
+{
+	width:110px;
+	padding-bottom:5px;
+	z-index:-1;
+	float:left;
+	margin-top:400px;
+}
+/**遮罩**/
+.shade,.start_box{
+	display:block;
+	z-index:9;
+	width:630px;  
+    position:absolute;  
+    left:50%;  
+    top:50%;  
+    margin:-355px 0 0 -325px;
+	}
+.shade{
+	height:705px;  
+	opacity:0.5;
+	background-color:#FFF;
+	}
+/**抓竿**/
+#catch_pole{
+	height:100px;
+	}
+#catch_box{
+	width:30px;
+	}
+#change{
+	margin:0 auto;
+	width:15px;
+	height:100px;
+	background-color:rgb(0,0,0);
+	}
+#touch{
+	margin:0 auto;
+	width:30px;
+	height:20px;
+	background-color:rgb(0,0,0);
+	}
