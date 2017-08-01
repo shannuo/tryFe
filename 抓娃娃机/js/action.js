@@ -43,7 +43,7 @@ var isWin = function(width)
 	}
 	if(id!=0)
 	{
-		var t = Math.round(Math.random()*9);
+		var t = Math.round(Math.random()*3);
 		setTimeout(function(){
 		$("#doll"+id+" img").animate({marginTop:'0px'},2000);
 		},2000);
