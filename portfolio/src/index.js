@@ -5,7 +5,6 @@ import './index.css';
 import App from './App';
 import Aboutme from './Aboutme';
 import Demo from './Demo';
-import registerServiceWorker from './registerServiceWorker';
 
 class Nav extends React.Component{
     render(){
@@ -26,4 +25,3 @@ ReactDOM.render((
     </Router>
     ),document.getElementById('root')
 );
-registerServiceWorker();
