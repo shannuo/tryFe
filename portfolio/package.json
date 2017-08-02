@@ -2,7 +2,6 @@
   "name": "profit",
   "version": "0.1.0",
   "private": true,
-  "homepage" : "dengshushan.com/tryFe/portfolio/build",
   "dependencies": {
     "alt": "^0.18.6",
     "react": "^15.6.1",
