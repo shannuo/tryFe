@@ -1,0 +1,85 @@
+@charset "utf-8";
+/* CSS Document */
+/*盒子*/
+.box
+{
+	margin:0 auto;
+	width:80%;
+}
+/**卡片**/
+.card
+{
+	background-color:rgba(225,252,153,0.1);
+	margin-bottom:10px;
+}
+
+.card:hover
+{
+	-ms-transform: rotate(5deg); /* IE 9 */
+	-webkit-transform: rotate(5deg);
+	transform: rotate(5deg);
+}
+
+.card a
+{
+	text-decoration:none;
+	color:rgb(51,51,51);
+}
+
+.card img
+{
+	width:100%;	
+}
+
+.card p
+{
+	font-size:20px;	
+	padding:5px;
+}
+
+.card_content
+{
+	background-color:rgb(255,255,255);
+	box-shadow:8px 8px 8px rgb(187,187,187);
+	border:1px solid rgb(119,119,119);
+	margin:%10;
+}
+
+.foot
+{
+	visibility:hidden;
+	margin:0 auto;
+	text-shadow: 1px 1px 1px #000;
+	font-size:24px;
+	background-color:rgb(255,255,255);
+}
+
+.card_content h1
+{
+	padding:10px;
+}
+
+.head
+{
+	background-color:rgb(0,153,153);
+	box-shadow:5px 5px rgb(187,187,187);
+}
+.head1
+{
+	background-color:#B69968;
+	box-shadow:5px 5px rgb(187,187,187);
+}
+.head2
+{
+	background-color:#FCAF17;
+	box-shadow:5px 5px rgb(187,187,187);
+}
+.head3
+{
+	background-color:#74787C;
+	box-shadow:5px 5px rgb(187,187,187);
+}
+
+@media only screen and (max-width: 500px) {
+    .box{width:100%}
+}
