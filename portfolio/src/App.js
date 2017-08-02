@@ -14,7 +14,7 @@ class App extends Component {
 			<div className="container-fluid">
 			<div className="navbar-header">
 				<a className="navbar-brand" href="">Ahri-珊</a>
-				<img src='favicon.ico' className="App-logo" alt="logo" />
+				<img src='./favicon.ico' className="App-logo" alt="logo" />
 			</div>
 			<div>
 				<ul className="nav navbar-nav">
