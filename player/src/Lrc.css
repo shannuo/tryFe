@@ -1,0 +1,46 @@
+@charset "utf-8";
+/* CSS Document */
+.lrc
+{
+	margin:0 auto;
+	width:90%;
+	height:500px;
+	text-align:center;
+	color:rgb(255,255,255);
+}
+
+.lrc a
+{
+	font-size:36px;
+	text-decoration:none;
+	color:rgb(0,0,0);
+}
+
+.lrc_box img
+{
+	border-radius:50%;
+	width:400px;
+	margin-bottom:25px;
+	animation: App-logo-spin infinite 20s linear;
+}
+
+.lrc_p
+{
+	font-size:25px;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@media only screen and (max-width: 768px) {
+    .lrc_box img
+	{
+		width:200px;
+	}
+		.lrc_p
+	{
+		font-size:11px;
+	}
+}

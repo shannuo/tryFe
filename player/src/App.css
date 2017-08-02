@@ -1,0 +1,21 @@
+
+.App{
+	font-size:24px;
+	background-color:rgb(36,36,36);
+	border:1px solid rgb(3,3,3);
+}
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40px;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@media only screen and (max-width: 768px) {
+    .App{
+	font-size:15px;
+	background-color:rgba(0,0,0,0.1);
+	}
+}

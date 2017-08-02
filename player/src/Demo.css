@@ -1,0 +1,96 @@
+@charset "utf-8";
+/* CSS Document */
+/*盒子*/
+.box
+{
+	margin:0 auto;
+	width:80%;
+}
+/**卡片**/
+.card_box
+{
+	border:1px solid rgb(51,51,51);
+	background-color:rgb(36,36,36);
+	padding-top:15px;
+	padding-bottom:15px;
+	border:1px solid rgb(51,51,51);
+	box-shadow:1px 2px 2px rgb(3,3,3);
+	height:500px;
+}
+
+.card
+{
+	padding-left:4px;
+	padding-right:4px;
+}
+
+/*.card:hover
+{
+	-ms-transform: rotate(5deg); 
+	-webkit-transform: rotate(5deg);
+	transform: rotate(5deg);
+}
+*/
+.card a
+{
+	text-decoration:none;
+	color:rgb(51,51,51);
+}
+
+.card img
+{
+	width:100%;	
+}
+
+.card_content
+{
+	background-color:rgb(0,0,0);
+	padding:5px;
+}
+
+.card_content p
+{
+	font-size:1em;	
+	padding:0px;
+	margin:0px 0px 3px 0px;
+	color:rgb(86,86,86);
+}
+
+.card_content h3
+{
+	font-size:1.5em;
+	font-weight:bold;	
+	padding:0px;
+	margin:0px 0px 8px 0px;
+	color:rgb(102,102,102);
+	height:30px;
+}
+
+.time
+{
+	margin-left:5%;
+	margin-right:79%;
+}
+
+@media only screen and (max-width: 768px) {
+    .box{width:90%}
+	.card_content p
+	{
+		font-size:4px;;	
+	}
+
+	.card_content h3
+	{
+		font-size:13px;	
+	}
+	.time
+	{
+		margin-left:7%;
+		margin-right:52%;
+		font-size:12px;
+	}
+	.card_box
+	{
+		height:280px;
+	}
+}
