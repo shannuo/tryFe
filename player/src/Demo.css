@@ -39,7 +39,8 @@
 
 .card img
 {
-	width:100%;	
+	width:375px;
+	height:375px;	
 }
 
 .card_content
@@ -92,5 +93,10 @@
 	.card_box
 	{
 		height:280px;
+	}
+	.card img
+	{
+		width:160px;
+		height:160px;	
 	}
 }

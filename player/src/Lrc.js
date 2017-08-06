@@ -1,23 +1,23 @@
 // JavaScript Document
 import React from 'react';
+import { connect } from 'react-redux';// 引入connect 
 import './Lrc.css';
 
-export default class Lrc extends React.Component {
+class Lrc extends React.Component {
 	 constructor(props) {
         super(props)
         this.state = {
-			lrc:"djalkdlksandkal",
-			img:"music01.jpg",
-			title:"猜拳小游戏"
 		}
     }
  	 render() {
+		const { text } = this.props;
 		return (
 		  <div className="lrc">
 		  	<div className="lrc_box">
-			<img src={this.state.img} alt={this.state.title} />
+			<img src={text.img} alt={text.title} />
 			</div>
 			<div className="lrc_p">
+			<p>{text.lrc}</p>
 			<p>不敢回看，左顾右盼不自然的暗自喜欢。</p>
 			<p>偷偷搭讪总没完的坐立难安</p>
 			<p>自叹说晚安多难堪又为难</p>
@@ -28,3 +28,13 @@ export default class Lrc extends React.Component {
 		);
  	 }
 	}
+	
+const getText = state => {
+    return {
+        text: state.update.text
+    }
+}
+
+export default connect(
+    getText
+)(Lrc)

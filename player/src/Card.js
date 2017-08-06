@@ -1,22 +1,27 @@
 // JavaScript Document
 import React from 'react';
+import {Link} from 'react-router';
+import { connect } from 'react-redux';// 引入connect 
+import { fetchUrl } from './actions/count';
 import './Demo.css';
-export default class CardComponent extends React.Component{
+
+class Card extends React.Component{
 	constructor(props) {
     super(props);
-    this.state = {date: new Date()};
-  }
+    this.state = {};
+	}
     render(){
+		const { fetchUrl } = this.props;
         return(
 				<div className="col-sm-3 col-xs-6 card">
 					<div className="card_box">
-					  <img src={this.props.img} alt={this.props.title} />
+					  <img src={this.props.img} alt={this.props.name} />
 					  <div  className="card_content">
-						  <p>{this.props.time}</p>
-						  <h3>{this.props.title}</h3>
+						  <p>{this.props.singer}</p>
+						  <h3>{this.props.name}</h3>
 						  <div>
-						  	<span className="glyphicon glyphicon-play"></span>
-							<span className="time">2:30</span>
+						  	<span className="glyphicon glyphicon-play" onClick={() => fetchUrl(this.props.id)}></span>
+							<span className="time">{this.props.time}</span>
 							<span className="glyphicon glyphicon-share"></span>
 						  </div>
 					  </div>
@@ -25,3 +30,14 @@ export default class CardComponent extends React.Component{
         )
     }
 }
+
+const changeText = state => {
+    return {
+        text: state.update.text
+    }
+}
+
+export default connect(
+    changeText,
+    { fetchUrl }
+)(Card)

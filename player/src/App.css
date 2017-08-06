@@ -1,12 +1,26 @@
 
-.App{
+.App
+{
 	font-size:24px;
-	background-color:rgb(36,36,36);
+	background-color:rgb(45,45,45);
 	border:1px solid rgb(3,3,3);
 }
-.App-logo {
+.App-logo 
+{
   animation: App-logo-spin infinite 20s linear;
   height: 40px;
+}
+.search_music
+{
+	position:absolute;
+	right:10%;
+	padding:5px;
+}
+.search_music a
+{
+	text-decoration:none;
+	color:rgb(150,150,150);
+	padding-left:5px;
 }
 
 @keyframes App-logo-spin {
@@ -14,8 +28,14 @@
   to { transform: rotate(360deg); }
 }
 @media only screen and (max-width: 768px) {
-    .App{
+    .App
+	{
 	font-size:15px;
 	background-color:rgba(0,0,0,0.1);
+	}
+	.search_music
+	{
+		position:inherit;
+		padding-left:140px;
 	}
 }
