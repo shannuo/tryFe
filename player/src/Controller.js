@@ -4,27 +4,86 @@ import { connect } from 'react-redux';// 引入connect
 import './Controller.css';
 
 class Controller extends React.Component {
-	 constructor(props) {
-        super(props)
-        this.state = {
-		}
+	  constructor(props) {
+    super(props)
+    this.state = {
+      isPlay: true,
+      allTime: 0,
+      currentTime: 0
     }
+  }
+  
+  millisecondToDate(time) {
+    const second = Math.floor(time % 60)
+    let minite = Math.floor(time / 60)
+    // let hour
+    // if(minite > 60) {
+    //   hour = minite / 60
+    //   minite = minite % 60
+    //   return `${Math.floor(hour)}:${Math.floor(minite)}:${Math.floor(second)}`
+    // }
+    return `${minite}:${second >= 10 ? second : `0${second}`}`
+  }
+
+  controlAudio(type,value) {
+    const audio = document.getElementById('audio')
+    switch(type) {
+      case 'allTime':
+        this.setState({
+          allTime: audio.duration
+        })
+        break
+      case 'play':
+        audio.play()
+        this.setState({
+          isPlay: true
+        })
+        break
+      case 'pause':
+        audio.pause()
+        this.setState({
+          isPlay: false
+        })
+        break
+      case 'changeCurrentTime':
+	  console.log(value)
+        this.setState({
+          currentTime: value
+        })
+        audio.currentTime = value
+        if(value == audio.duration) {
+          this.setState({
+            isPlay: true
+          })
+        }
+        break
+      case 'getCurrentTime':
+        this.setState({
+          currentTime: audio.currentTime
+        })
+        if(audio.currentTime == audio.duration) {
+          this.setState({
+            isPlay: false
+          })
+        }
+        break
+	  default: 
+	  	console.log("error");
+    }
+  }
  	 render() {
 		const {text} = this.props
 		return (
 			<div className="play" onClick={this.handle}>
-			 	<audio id="audio" className="play" src={text} autoPlay="autoplay" controls></audio>
+				<audio id="audio" src={text.url} autoPlay="autoplay" onCanPlay={() => this.controlAudio('allTime')}
+    onTimeUpdate={(e) => this.controlAudio('getCurrentTime')}></audio>
 				<span className="icon glyphicon glyphicon-step-backward"></span>
-				<span className="icon glyphicon glyphicon-play"></span>
+				<span  className={this.state.isPlay ? 'icon glyphicon glyphicon-pause' : 'icon glyphicon glyphicon-play'} onClick={() => this.controlAudio(this.state.isPlay ? 'pause' : 'play')}></span>
 				<span className="icon glyphicon glyphicon-step-forward"></span>
-				<span className="icon1">{text.name}</span>
-				<span className="icon1">{text.time}</span>
-				<div className="progress pro">
-					<div className="progress-bar probar" role="progressbar" aria-valuenow="60" 
-						aria-valuemin="0" aria-valuemax="100">
-						<span className="sr-only">40% 完成</span>
-					</div>
-				</div>
+				<span className="icon1">{text.title}</span>
+				<span className="icon1">{this.millisecondToDate(this.state.currentTime)+'/'+this.millisecondToDate(this.state.allTime)}</span>
+				<input type="range" step="0.01" max={this.state.allTime} value={this.state.currentTime} onChange={(value) => this.controlAudio('changeCurrentTime',value)} 
+  />
 			</div>
 		);
  	 }

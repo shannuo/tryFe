@@ -1,4 +1,4 @@
-import { INCREASE, DECREASE, GETSUCCESS, REFRESHDATA, GETTEXT } from '../constants'  // 引入action类型名常量
+import { INCREASE, DECREASE, GETSUCCESS, REFRESHDATA, GETTEXT,GETLRC } from '../constants'  // 引入action类型名常量
 import 'whatwg-fetch'  // 可以引入fetch来进行Ajax
 
 // 这里的方法返回一个action对象
@@ -25,6 +25,13 @@ export const refreshData = () => {
 export const changetext = (s) => {
     return {
         type: GETTEXT,
+		text: s
+    }
+}
+
+export const changelrc = (s) => {
+    return {
+        type: GETLRC,
 		text: s
     }
 }
@@ -59,7 +66,7 @@ export const getSuccess = (json) => {
     }
 }
 
-function getUrl(id)
+function getUrl(id,img,name,time)
 {
 	var url = 'http://localhost:3000/music/url?id='+id;
 	return dispatch => {
@@ -72,9 +79,38 @@ function getUrl(id)
 	})
             .then((res) => { console.log(res.status); return res.json() })
             .then((data) => {
-				var action = changetext(data.data["0"].url)
+				var res = {id:'',url:'',img:'',title:'',time:''}
+				res.url = data.data["0"].url
+				res.id = data.data["0"].id
+				res.img = img
+				res.id = id
+				res.title = name
+				res.time = time
+				var action = changetext(res)
 				dispatch(action)
 				return data.data["0"].url;
+            })
+			.catch((e) => { console.log(e.message) })
+        }
+}
+
+function getLrc(id)
+{
+	var url = 'http://localhost:3000/lyric?id='+id;
+	return dispatch => {
+		return fetch(url, {
+    method: 'GET',
+    mode: 'cors',
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+    	},
+	})
+            .then((res) => { console.log(res.status); return res.json() })
+            .then((data) => {
+				var lrc = {lrc:''}
+				lrc.lrc = data.lrc.lyric
+				var action = changelrc(lrc)
+				dispatch(action)
             })
 			.catch((e) => { console.log(e.message) })
         }
@@ -108,10 +144,18 @@ export function fetchPostsIfNeeded(keyword) {
     }
 }
 
-export function fetchUrl(id) {
+export function fetchUrl(id,img,name,time) {
     // 注意这个函数也接收了 getState() 方法
     // 它让你选择接下来 dispatch 什么
     return (dispatch, getState) => {
-        return dispatch(getUrl(id))
+        return dispatch(getUrl(id,img,name,time))
+    }
+}
+
+export function fetchLrc(id) {
+    // 注意这个函数也接收了 getState() 方法
+    // 它让你选择接下来 dispatch 什么
+    return (dispatch, getState) => {
+        return dispatch(getLrc(id))
     }
 }

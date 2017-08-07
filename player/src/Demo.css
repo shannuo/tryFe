@@ -51,7 +51,7 @@
 
 .card_content p
 {
-	font-size:1em;	
+	font-size:1.2em;	
 	padding:0px;
 	margin:0px 0px 3px 0px;
 	color:rgb(86,86,86);
@@ -70,24 +70,28 @@
 .time
 {
 	margin-left:5%;
-	margin-right:79%;
+	margin-right:70%;
 }
 
 @media only screen and (max-width: 768px) {
     .box{width:90%}
 	.card_content p
 	{
-		font-size:4px;;	
+		font-size:7px;
+		text-overflow:ellipsis;	
 	}
 
 	.card_content h3
 	{
-		font-size:13px;	
+		font-size:12px;
+		overflow:hidden;
+		white-space:nowrap;
+		text-overflow:ellipsis;
 	}
 	.time
 	{
 		margin-left:7%;
-		margin-right:52%;
+		margin-right:50%;
 		font-size:12px;
 	}
 	.card_box

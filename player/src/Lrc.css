@@ -20,6 +20,7 @@
 {
 	border-radius:50%;
 	width:400px;
+	height:400px;
 	margin-bottom:25px;
 	animation: App-logo-spin infinite 20s linear;
 }
@@ -38,6 +39,7 @@
     .lrc_box img
 	{
 		width:200px;
+		height:200px;
 	}
 		.lrc_p
 	{
