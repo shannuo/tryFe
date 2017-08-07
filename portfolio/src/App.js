@@ -11,15 +11,14 @@ class App extends Component {
  	render() {
 		return (
 		  <nav className="navbar navbar-default App">
-			<div className="container-fluid">
+			<div className="nav_content">
 			<div className="navbar-header">
-				<a className="navbar-brand" href="">Ahri-珊</a>
-				<img src='./favicon.ico' className="App-logo" alt="logo" />
+				<a className="navbar-brand collapse navbar-collapse is-collapse" href="">Ahri-珊</a>
 			</div>
-			<div>
+			<div className="link">
 				<ul className="nav navbar-nav">
-					<li className="dropdown"><Link to="/">Demo</Link></li>
-					<li className="dropdown"><Link to="/about">About Me</Link></li>
+					<li className="drop"><Link to="/">前端小项目</Link></li>
+					<li className="drop"><Link to="/about">About Me</Link></li>
 				</ul>
 			</div>
 			</div>

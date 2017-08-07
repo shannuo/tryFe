@@ -12,6 +12,7 @@ class Nav extends React.Component{
             <div>   
                 <App/>
                 {this.props.children}
+				<div className="footer">Ahri-珊制作</div>
             </div>              
         )
     }

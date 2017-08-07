@@ -10,7 +10,7 @@ export default class AboutmeComponent extends React.Component {
 		return (
 		  <div className="aboutme">
 		  	<div>
-		  		<a href="https://shannuo.github.io">由于颜值问题，您无法查看AboutMe,详情请疯狂点击屏幕提升您的颜值* - *</a>
+		  		<a href="https://shannuo.github.io">页面维护中，敬请期待* - *</a>
 			</div>
 		  </div>
 		);
