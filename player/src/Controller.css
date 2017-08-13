@@ -7,9 +7,10 @@
 	background-color:rgb(3,3,3);
 	width:100%;
 	height:45px;
+	color:rgb(102,102,102);
 }
 
-.icon,.icon1,.icon2
+.icon,.icon1,.icon2,.icon3
 {
 	margin:8px;
 	display:inline-block;
@@ -18,9 +19,14 @@
 	text-overflow:ellipsis;
 }
 
-.icon
+.icon,.icon3
 {
 	height:17px;
+}
+
+.icon3
+{
+	color:rgb(51,51,51);
 }
 
 .icon1
