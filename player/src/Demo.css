@@ -65,6 +65,9 @@
 	margin:0px 0px 8px 0px;
 	color:rgb(102,102,102);
 	height:30px;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
 }
 
 .time

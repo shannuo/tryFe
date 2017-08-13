@@ -6,7 +6,7 @@
 	width:90%;
 	height:500px;
 	text-align:center;
-	color:rgb(255,255,255);
+	color:#eff0dc;
 }
 
 .lrc a
@@ -43,6 +43,6 @@
 	}
 		.lrc_p
 	{
-		font-size:11px;
+		font-size:12px;
 	}
 }

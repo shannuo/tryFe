@@ -1,13 +1,14 @@
 // JavaScript Document
 import React from 'react';
 import { connect } from 'react-redux';// 引入connect 
+import { changetime } from './actions/count';
 import './Controller.css';
 
 class Controller extends React.Component {
 	  constructor(props) {
     super(props)
     this.state = {
-      isPlay: true,
+      isPlay: false,
       allTime: 0,
       currentTime: 0
     }
@@ -35,12 +36,18 @@ class Controller extends React.Component {
         break
       case 'play':
         audio.play()
+		//console.log(this.state.currentTime)
+		this.timerID = setInterval(
+		  () => this.props.changetime(this.state.currentTime),
+		  1
+		);
         this.setState({
           isPlay: true
         })
         break
       case 'pause':
         audio.pause()
+		clearInterval(this.timerID);
         this.setState({
           isPlay: false
         })
@@ -51,7 +58,7 @@ class Controller extends React.Component {
           currentTime: value
         })
         audio.currentTime = value
-        if(value == audio.duration) {
+        if(value === audio.duration) {
           this.setState({
             isPlay: true
           })
@@ -61,7 +68,7 @@ class Controller extends React.Component {
         this.setState({
           currentTime: audio.currentTime
         })
-        if(audio.currentTime == audio.duration) {
+        if(audio.currentTime === audio.duration) {
           this.setState({
             isPlay: false
           })
@@ -72,16 +79,16 @@ class Controller extends React.Component {
     }
   }
  	 render() {
-		const {text} = this.props
+		const {text,changetime} = this.props
 		return (
 			<div className="play" onClick={this.handle}>
-				<audio id="audio" src={text.url} autoPlay="autoplay" onCanPlay={() => this.controlAudio('allTime')}
+				<audio id="audio" src={text.url} onCanPlay={() => this.controlAudio('allTime')}
     onTimeUpdate={(e) => this.controlAudio('getCurrentTime')}></audio>
 				<span className="icon glyphicon glyphicon-step-backward"></span>
 				<span  className={this.state.isPlay ? 'icon glyphicon glyphicon-pause' : 'icon glyphicon glyphicon-play'} onClick={() => this.controlAudio(this.state.isPlay ? 'pause' : 'play')}></span>
 				<span className="icon glyphicon glyphicon-step-forward"></span>
-				<span className="icon1">{text.title}</span>
-				<span className="icon1">{this.millisecondToDate(this.state.currentTime)+'/'+this.millisecondToDate(this.state.allTime)}</span>
+				<span className="icon1" onClick={() => changetime(this.state.currentTime)}>{text.title}</span>
+				<span className="icon2">{this.millisecondToDate(this.state.currentTime)+'/'+this.millisecondToDate(this.state.allTime)}</span>
 				<input type="range" step="0.01" max={this.state.allTime} value={this.state.currentTime} onChange={(value) => this.controlAudio('changeCurrentTime',value)} 
   />
 			</div>
@@ -96,5 +103,6 @@ const getText = state => {
 }
 
 export default connect(
-    getText
+    getText,
+	{ changetime }
 )(Controller)

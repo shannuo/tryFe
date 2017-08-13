@@ -1,5 +1,5 @@
 // reducers/count.js
-import { INCREASE, DECREASE, GETSUCCESS, REFRESHDATA,GETTEXT,GETLRC } from '../constants' // 引入action类型常量名
+import { INCREASE, DECREASE, GETSUCCESS, REFRESHDATA, GETTEXT, GETLRC,GETTIME } from '../constants' // 引入action类型常量名
 
 // 初始化state数据
 const initialState = {
@@ -72,7 +72,7 @@ const initialState = {
 			"",
 			name
 			:
-			"我喜欢上你时的内心活动,",
+			"我喜欢上你时的内心活动（demo）",
 			singer
 			:
 			"陈绮贞",
@@ -82,7 +82,8 @@ const initialState = {
 			}
 			],
 	text:{url:'',id:'',img:'music01.jpg',title:'',time:''},
-	lrc:{lrc:'当前没有播放的歌曲*-*'}
+	lrc:['当前没有播放的歌曲*-*'],
+	currenttime:0
 }
 
 // 通过dispatch action进入
@@ -102,6 +103,8 @@ export default function update(state = initialState, action) {
 			return Object.assign({}, state, { text:action.text })
 		case GETLRC:
 		return Object.assign({}, state, { lrc:action.text })
+		case GETTIME:
+		return Object.assign({}, state, { currenttime:action.currenttime })
         default:
             return state
     }

@@ -1,4 +1,4 @@
-import { INCREASE, DECREASE, GETSUCCESS, REFRESHDATA, GETTEXT,GETLRC } from '../constants'  // 引入action类型名常量
+import { INCREASE, DECREASE, GETSUCCESS, REFRESHDATA, GETTEXT, GETLRC, GETTIME } from '../constants'  // 引入action类型名常量
 import 'whatwg-fetch'  // 可以引入fetch来进行Ajax
 
 // 这里的方法返回一个action对象
@@ -22,6 +22,7 @@ export const refreshData = () => {
     }
 }
 
+//更新歌曲播放链接
 export const changetext = (s) => {
     return {
         type: GETTEXT,
@@ -29,6 +30,15 @@ export const changetext = (s) => {
     }
 }
 
+//更新播放进度
+export const changetime = (s) => {
+    return {
+        type: GETTIME,
+		currenttime: s
+    }
+}
+
+//更新歌词
 export const changelrc = (s) => {
     return {
         type: GETLRC,
@@ -36,9 +46,10 @@ export const changelrc = (s) => {
     }
 }
 
+//处理歌曲信息
 export const getSuccess = (json) => {
 	var data = [];
-	console.log(json);
+	//console.log(json);
 	for(var i=0;i<json.result.songs.length;i++)
 	{
 		data[i] = {name:'',time:'',lrc:'',img:'',url:'',singer:'',id:''};
@@ -66,6 +77,7 @@ export const getSuccess = (json) => {
     }
 }
 
+//获取歌曲播放链接
 function getUrl(id,img,name,time)
 {
 	var url = 'http://localhost:3000/music/url?id='+id;
@@ -94,6 +106,7 @@ function getUrl(id,img,name,time)
         }
 }
 
+//获取歌词
 function getLrc(id)
 {
 	var url = 'http://localhost:3000/lyric?id='+id;
@@ -107,8 +120,10 @@ function getLrc(id)
 	})
             .then((res) => { console.log(res.status); return res.json() })
             .then((data) => {
-				var lrc = {lrc:''}
-				lrc.lrc = data.lrc.lyric
+				var lrc = {}
+				var temp_lrc = parseLyric(data.lrc.lyric)
+				//console.log(temp_lrc)
+				lrc = temp_lrc
 				var action = changelrc(lrc)
 				dispatch(action)
             })
@@ -116,6 +131,28 @@ function getLrc(id)
         }
 }
 
+//处理歌词
+function parseLyric(lrc) {
+    var lyrics = lrc.split("\n");
+    var lrcObj = [];
+    for(var i=0;i<lyrics.length;i++){
+        var lyric = decodeURIComponent(lyrics[i]);
+        var timeReg = /\[\d*:\d*((\.|\:)\d*)*\]/g;
+        var timeRegExpArr = lyric.match(timeReg);
+        if(!timeRegExpArr)continue;
+        var clause = lyric.replace(timeReg,'');
+        for(var k = 0,h = timeRegExpArr.length;k < h;k++) {
+            var t = timeRegExpArr[k];
+            var min = Number(String(t.match(/\[\d*/i)).slice(1)),
+                sec = Number(String(t.match(/\:\d*/i)).slice(1));
+            var time = min * 60 + sec;
+            lrcObj[time] = clause;
+        }
+    }
+    return lrcObj;
+}
+
+//获取歌曲信息
 function fetchPosts(keyword) {
 	var url = 'http://localhost:3000/search?keywords='+keyword;
     return dispatch => {
@@ -135,26 +172,22 @@ function fetchPosts(keyword) {
         }
 }
 
-// 这里的方法返回一个函数进行异步操作
+//搜索歌曲
 export function fetchPostsIfNeeded(keyword) {
-    // 注意这个函数也接收了 getState() 方法
-    // 它让你选择接下来 dispatch 什么
     return (dispatch, getState) => {
         return dispatch(fetchPosts(keyword))
     }
 }
 
+//获取歌词播放链接
 export function fetchUrl(id,img,name,time) {
-    // 注意这个函数也接收了 getState() 方法
-    // 它让你选择接下来 dispatch 什么
     return (dispatch, getState) => {
         return dispatch(getUrl(id,img,name,time))
     }
 }
 
+//获取歌词
 export function fetchLrc(id) {
-    // 注意这个函数也接收了 getState() 方法
-    // 它让你选择接下来 dispatch 什么
     return (dispatch, getState) => {
         return dispatch(getLrc(id))
     }
