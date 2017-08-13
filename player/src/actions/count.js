@@ -80,7 +80,7 @@ export const getSuccess = (json) => {
 //获取歌曲播放链接
 function getUrl(id,img,name,time)
 {
-	var url = 'http://localhost:3000/music/url?id='+id;
+	var url = 'http://youxinyu.me:3000/music/url?id='+id;
 	return dispatch => {
 		return fetch(url, {
     method: 'GET',
@@ -109,7 +109,7 @@ function getUrl(id,img,name,time)
 //获取歌词
 function getLrc(id)
 {
-	var url = 'http://localhost:3000/lyric?id='+id;
+	var url = 'http://youxinyu.me:3000/lyric?id='+id;
 	return dispatch => {
 		return fetch(url, {
     method: 'GET',
@@ -154,7 +154,7 @@ function parseLyric(lrc) {
 
 //获取歌曲信息
 function fetchPosts(keyword) {
-	var url = 'http://localhost:3000/search?keywords='+keyword;
+	var url = 'http://youxinyu.me:3000/search?keywords='+keyword;
     return dispatch => {
         return fetch(url, {
     method: 'GET',
