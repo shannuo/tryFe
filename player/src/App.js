@@ -10,6 +10,7 @@ class App extends Component {
         this.state = {
 			value:'陈绮贞',
 			class: 'collapse navbar-collapse',
+			class1: 'navbar-form navbar-right',
 			liked: true
         }
     }
@@ -20,9 +21,9 @@ class App extends Component {
 	hand=(event)=>
 	{
 		if(this.state.liked)
-			this.setState({liked: false,class:''});
+			this.setState({liked: false,class:'',class1:'nav navbar-nav search'});
 		else
-			this.setState({liked: true,class:'collapse navbar-collapse'});
+			this.setState({liked: true,class:'collapse navbar-collapse',class1:'navbar-form navbar-right'});
 	}
 
  	render() {
@@ -46,8 +47,8 @@ class App extends Component {
 					<li className="dropdown"><Link to="/" onClick={this.hand}>Demo</Link></li>
 					<li className="dropdown"><Link to="/lrc" onClick={this.hand}>Lrc</Link></li>
 				</ul>
-				<div className="navbar-form navbar-right">
-					<span ><input type="text" value={value} onChange={this.handleChange} /></span>
+				<div className={this.state.class1}>
+					<span><input type="text" value={value} onChange={this.handleChange} /></span>
 					<Link to="/"><button onClick={() => fetchPostsIfNeeded(this.state.value)}><span  onClick={this.hand}>搜索</span></button></Link>
 				</div>
 			</div>
