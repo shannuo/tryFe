@@ -25,7 +25,6 @@ class Lrc extends React.Component {
 		if(bling)
 		{
 			bling.style.color = "#bce672";
-			bling.style.fontSize = "15px";
 		}
 		var notime = [];
 		var p = 0;

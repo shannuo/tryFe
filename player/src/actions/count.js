@@ -26,7 +26,7 @@ export const refreshData = () => {
 export const changetext = (s) => {
     return {
         type: GETTEXT,
-		text: s
+		text: s,
     }
 }
 
@@ -91,13 +91,14 @@ function getUrl(id,img,name,time)
 	})
             .then((res) => { console.log(res.status); return res.json() })
             .then((data) => {
-				var res = {id:'',url:'',img:'',title:'',time:''}
+				var res = {id:'',url:'',img:'',title:'',time:'',isPlay:false}
 				res.url = data.data["0"].url
 				res.id = data.data["0"].id
 				res.img = img
 				res.id = id
 				res.title = name
 				res.time = time
+				res.isPlay = true
 				var action = changetext(res)
 				dispatch(action)
 				return data.data["0"].url;
@@ -112,12 +113,12 @@ function getLrc(id)
 	var url = 'http://youxinyu.me:3000/lyric?id='+id;
 	return dispatch => {
 		return fetch(url, {
-    method: 'GET',
-    mode: 'cors',
-    headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-    	},
-	})
+			method: 'GET',
+			mode: 'cors',
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded',
+				},
+			})
             .then((res) => { console.log(res.status); return res.json() })
             .then((data) => {
 				var lrc = {}
