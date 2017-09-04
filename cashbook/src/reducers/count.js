@@ -1,5 +1,5 @@
 // reducers/count.js
-import { GETSUCCESS } from '../constants' // 引入action类型常量名
+import { GETSUCCESS,GETBILL } from '../constants' // 引入action类型常量名
 
 // 初始化state数据
 const initialState = {
@@ -15,6 +15,8 @@ export default function update(state = initialState, action) {
     switch(action.type) {
         case GETSUCCESS:
             return Object.assign({}, state, { login: action.data.login , username: action.data.username })
+		case GETBILL:
+            return Object.assign({}, state, { data: action.data })
         default:
             return state
     }

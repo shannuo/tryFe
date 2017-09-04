@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';// 引入connect 
-import { login } from './actions/count'
+import { connect } from 'react-redux'; // 引入connect 
+import { login } from './actions/count' // 引入登陆注册方法
 import './Login.css';
 
 class Login extends Component {

@@ -28,10 +28,14 @@ class App extends Component {
 
  	render() {
 		return (
-		  <nav className="navbar navbar-default App">
+		  <nav className="navbar-default App">
 			<div className="container-fluid">
 			<div className="navbar-header">
-				<span className="navbar-brand" href="">Ahri-珊 记账本 <small><Link className="dropdown" to="/Login">{this.props.username ? this.props.username : '登录'}</Link></small></span>
+				<span className="navbar-brand" href="">Ahri-珊 记账本 
+					<small>
+						<Link className="dropdown" to="/Login">{this.props.username ? this.props.username : '登录'}</Link>
+					</small>
+				</span>
 				<button className="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" onClick={this.hand}>
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
