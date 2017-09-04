@@ -1,13 +1,20 @@
-import { GETSUCCESS,GETBILL } from '../constants'  // 引入action类型名常量
+import { GETSUCCESS,GETBILL,GETMES } from '../constants'  // 引入action类型名常量
 import 'whatwg-fetch'  // 可以引入fetch来进行Ajax
 import {hashHistory} from 'react-router';
 
 // 这里的方法返回一个action对象
 
-//处理用户信息
+//返回登陆状态
 export const getSuccess = (json) => {
     return {
         type: GETSUCCESS,
+        data: json
+    }
+}
+//返回添加状态
+export const getMes = (json) => {
+    return {
+        type: GETMES,
         data: json
     }
 }
@@ -104,5 +111,35 @@ function fetchBill(time) {
 export function bill(time) {
     return (dispatch, getState) => {
         return dispatch(fetchBill(time))
+    }
+}
+
+//添加账单
+
+function fetchAddBill(bill) {
+	var	url = 'http://localhost:3000/account';
+    return dispatch => {
+        return fetch(url, {
+			method: 'POST',
+			mode: 'cors',
+			credentials: 'include',
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded',
+				},
+			body: "type="+bill.type+"&income="+bill.income+"&money="+bill.money
+			})
+            .then((res) => { console.log(res.status); return res.json() })
+            .then((data) => {
+				console.log(data);
+				var action = getMes(data);
+                dispatch(action);
+            })
+            .catch((e) => { console.log(e.message) })
+        }
+}
+
+export function addBill(bill) {
+    return (dispatch, getState) => {
+        return dispatch(fetchAddBill(bill))
     }
 }
