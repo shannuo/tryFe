@@ -1,5 +1,4 @@
 /**初始化CSS**/
-
 *{
 	margin:0;
 	padding:0;
@@ -57,35 +56,35 @@ body{
 	color:red;
 }
 @keyframes boost{
-	0%, 39%, 100% { 
+	0%,39%,100%{ 
 		opacity:0; 
 	}
-  	40% { 
+  	40%{ 
 		opacity:1;
 	}
 }
 @keyframes shake{
-	0% {
+	0%{
         transform:scale(1);
         transform:scale(1)
     }
 
-    10%,20% {
+    10%,20%{
         transform:scale(0.9) rotate(-3deg);
         transform:scale(0.9) rotate(-3deg)
     }
 
-    30%,50%,70%,90% {
+    30%,50%,70%,90%{
         transform:scale(1.1) rotate(3deg);
         transform:scale(1.1) rotate(3deg)
     }
 
-    40%,60%,80% {
+    40%,60%,80%{
         transform:scale(1.1) rotate(-3deg);
         transform:scale(1.1) rotate(-3deg)
     }
 
-    100% {
+    100%{
         transform:scale(1) rotate(0);
         transform:scale(1) rotate(0)
     }
@@ -128,7 +127,29 @@ body{
 	cursor:pointer;
 	color:rgb(3,3,3);
 }
-/**登录按钮**/
-.login{
-	background-color:rgb(107,107,107);
+/*弹出框*/
+.pop{
+	display:block;
+	z-index:10;
+	width:300px;  
+    height:175px;  
+    position:absolute;  
+    left:50%;  
+    top:50%;  
+    margin:200px 0 0 -150px;
+	background-color:#FFF;
+	opacity:0.8;
+	border:1px solid #F8F8F8;
+	text-align:center;
+	display:none;
+	}
+.pop p{
+	margin:70px 50px 60px 50px;
+	font-size:28px;
+}
+.appear{
+	display:block;
+}
+.success{
+	color:rgb(0,223,85);
 }

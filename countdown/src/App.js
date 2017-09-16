@@ -211,30 +211,40 @@ class App extends Component {
 	  if(!this.state.phone)
 	  	this.setState({
 		  class1:'show shake',
+		  class2:'',
 		  iconClass:'input-group-addon glyphicon glyphicon-exclamation-sign red',
 		  tips:this.props.init.phoneNullError
 		});
 	  else if(this.state.login!=='able'){
 	  	this.setState({
-		  tips:this.props.init.loginError
+		  tips:this.props.init.loginError,
+		  class1:'',
+		  class2:''
 		});
-		alert(this.props.init.loginError);
+		this.refs.pop.className += ' appear red'; 
+		setTimeout(()=>{this.refs.pop.className = 'pop';},1000);
 	  }
 	  else if(!this.state.code)
 	  	this.setState({
 		  class2:'show shake',
+		  class1:'',
 		  tips:this.props.init.codeNullError
 		});
 	  else if(!this.codeTest())
 	  	this.setState({
 		  class2:'show shake',
+		  class1:'',
 		  tips:this.props.init.codeTestError
 		});
 	  else{
 		this.setState({
-		  tips:this.props.init.loginSuccess
+		  tips:this.props.init.loginSuccess,
+		  class1:'',
+		  class2:''
 		});
-	  	alert(this.props.init.loginSuccess);
+	  	this.refs.pop.className += ' appear success';
+		setTimeout(()=>{this.refs.pop.className = 'pop';},1000); 
+		this.resetButton();
 	  }
   }
   // 测试验证码
@@ -246,6 +256,9 @@ class App extends Component {
 	  const { iconClass, class1, class2, code, tips, countdown, login , phone } = this.state;
     return (
 		<div className="father">
+			<div className="pop" ref="pop" >
+			  <p>{tips}</p>
+			</div>
 			<div className="box">
 			  <h1 className="title">验证码登录</h1>
 			  <div className="input-group input-group-lg input-css">
