@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './App.css';
 
 class App extends Component {
@@ -17,6 +18,10 @@ class App extends Component {
 		  status:'disable',												// 倒计时按钮状态(disable:不可发送,able:可发送,sending:倒计时中)
 		  login:'disable',												// 登陆按钮样式(disable:不可登录,able:可登陆）
 	  }
+  }
+  // 传递color属性给子孙组件
+  getChildContext() {
+        return {color: "red"};
   }
   handlePhone=(event)=>{
 	  // 倒计时按钮处于倒计时未结束状态时手机号不能修改
@@ -285,5 +290,8 @@ class App extends Component {
     );
   }
 }
+App.childContextTypes = {
+  color: PropTypes.string
+};
 
 export default App;
