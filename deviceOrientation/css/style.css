@@ -1,0 +1,28 @@
+@charset "utf-8";
+
+.ball-contianer {
+	position: absolute;
+	top: 5%;
+	left: 300px;
+}
+
+.ball {
+	position: absolute;
+	width: 500px;
+	z-index: 10;
+	transition: .65s linear;
+}
+
+.block {
+	position: relative;
+}
+
+.light {
+	position: absolute;
+	width: 500px;
+	height: 500px;
+	background-color: white;
+	opacity: 0.2;
+	border-radius: 50%;
+	transition: 1s linear;
+}

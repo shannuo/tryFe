@@ -1,0 +1,37 @@
+@charset "utf-8";
+.controlBtn, .ball {
+	width: 60px;
+	height: 60px;
+	position: fixed;
+	z-index: 199999;
+	left: 8%;
+	top: 5%;
+}
+
+
+
+.controlIconae {
+	background: url(https://www.h5anli.com/test/threejsdemo-2016-12-09/images/controlIconae.png);
+	background-size: 100% 100%;
+}
+
+.controlIcon {
+	background: url(https://www.h5anli.com/test/threejsdemo-2016-12-09/images/controlIcon.png);
+	background-size: 100% 100%;
+}
+
+.btn1 {
+	position: absolute;
+	width: 74px;
+	height: 96px;
+	top: 20%;
+	left: 40%;
+	-webkit-transform: perspective(600px);
+	background: url(../images/btn1.png);
+	background-size: 100% 100%;
+}
+
+.bounceant1 {
+	-webkit-animation: bounceant1 3s infinite;
+	animation: bounceant1 3s infinite;
+}
